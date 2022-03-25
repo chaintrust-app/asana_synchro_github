@@ -45,24 +45,15 @@ current_task = (''.join(list(list_tasks_with_id)))
 
 #On cherche la colonne associé sur asana 
     
-# def find_state_id_by_name(sections):
-#     print('----')
-#     print(new_state_of_task)
-#     print(sections)
-#     if new_state_of_task in sections['name']:
-#         return sections['gid']
-#     else : 
-#         return ''
+def find_state_id_by_name(sections):
+    if new_state_of_task in sections['name']:
+        return sections['gid']
+    else : 
+        return ''
 
-# print(list(sections))
-# list_state_with_id = map(find_state_id_by_name, list(sections))
-# print(map(find_state_id_by_name, list(sections)))
-# print(list(list_state_with_id))
-# new_state_current_task = (''.join(list(list_state_with_id)))
-# print(new_state_current_task)
-
-
-
+list_state_with_id = map(find_state_id_by_name, list(sections))
+new_state_current_task = (''.join(list(list_state_with_id)))
+#print(new_state_current_task)
 
 #on bouge la carte
 
