@@ -1,5 +1,5 @@
 #!/bin/sh -l
-
-echo "Hello $1"
-time=$(date)
-echo "::set-output name=time::$time"
+export ASANA_ACCESS_TOKEN=$ASANA_ACCESS_TOKEN
+echo 'rtejk'
+echo $ASANA_ACCESS_TOKEN
+python asanaProject.py
