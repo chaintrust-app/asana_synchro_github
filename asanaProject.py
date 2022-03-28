@@ -2,6 +2,8 @@ import asana
 import os 
 import re
 
+print(os.environ['ASANA_ACCESS_TOKEN'])
+
 ################ info Github
 name_PR = '  OPS111 1- PR test de github'
 new_state_of_task = 'In review'
