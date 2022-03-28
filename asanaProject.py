@@ -1,8 +1,8 @@
 import asana
 import os 
 import re
-from entrypoint.sh import test_name 
-print(test_name)
+
+print(os.environ['PR_NAME'])
 
 print(os.environ['ASANA_ACCESS_TOKEN'])
 

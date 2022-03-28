@@ -2,8 +2,11 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  asana-secret: 
+  asana_secret: 
     description: 'Personal Access Token'
+    required: true
+  pr_name: 
+    description: 'name of the PR'
     required: true
 outputs:
   time: # id of output
@@ -12,4 +15,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    ASANA_ACCESS_TOKEN: ${{ inputs.asana-secret }}
+    ASANA_ACCESS_TOKEN: ${{ inputs.asana_secret }}
+    PR_NAME: ${{ inputs.pr_name }}

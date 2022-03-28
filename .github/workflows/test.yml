@@ -13,7 +13,8 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
-          asana-secret: ${{ secrets.ASANA_ACCESS_TOKEN }}
+          asana_secret: ${{ secrets.ASANA_ACCESS_TOKEN }}
+          pr_name: ${{ github.event.commits[0].message}}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
