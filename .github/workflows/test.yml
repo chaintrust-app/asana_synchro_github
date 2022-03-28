@@ -18,4 +18,4 @@ jobs:
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
       - name: Get the name of PR
-        run: echo "The PR is ${{ github.event.pull_request.head.sha }}" 
+        run: echo "The PR is ${{ github.event.pull_request.head.sha }} ou ${{ github.event.commits[0].message}}" 
