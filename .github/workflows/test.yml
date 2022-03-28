@@ -21,5 +21,3 @@ jobs:
       - name: Get the name of PR
         id: name
         run: echo "The name of the PR is ${{ github.event.commits[0].message}}" 
-      - name: Test
-        run: echo "{ 'name_pr' '${{ github.event.commits[0].message}}' }" >> ./asanaProject.py

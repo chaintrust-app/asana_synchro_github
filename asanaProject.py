@@ -2,15 +2,9 @@ import asana
 import os 
 import re
 
-print(os.environ['PR_NAME'])
-
-print(os.environ['ASANA_ACCESS_TOKEN'])
-
 ################ info Github
-name_PR = '  OPS111 1- PR test de github'
+name_PR = os.environ['PR_NAME']
 new_state_of_task = 'In review'
-
-new_state_current_task = '1201905760894304'
 
 #si plusieurs => faire bouger les 2
 
@@ -45,7 +39,6 @@ def find_task_id_by_name(tasks):
     
 list_tasks_with_id = map(find_task_id_by_name, list(tasks))
 current_task = (''.join(list(list_tasks_with_id)))
-#print(current_task)
 
 #On cherche la colonne associé sur asana 
     
@@ -57,10 +50,8 @@ def find_state_id_by_name(sections):
 
 list_state_with_id = map(find_state_id_by_name, list(sections))
 new_state_current_task = (''.join(list(list_state_with_id)))
-#print(new_state_current_task)
 
 #on bouge la carte
-
 client.sections.add_task(new_state_current_task, {'task': current_task})
 
 
