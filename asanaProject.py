@@ -3,7 +3,6 @@ import os
 import re
 
 print(os.environ['ASANA_ACCESS_TOKEN'])
-print(NAME_PR)
 
 ################ info Github
 name_PR = '  OPS111 1- PR test de github'
