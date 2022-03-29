@@ -46,6 +46,7 @@ def find_state_id_by_name(tasks):
 
 new_state_of_task = 'In review'  ## a checker 
 name_PR = os.environ['PR_NAME']
+print(os.environ['IS_MERGE'])
 
 #A modifier à la mano 
 typology_name = ['ops', 'bus', 'cli']

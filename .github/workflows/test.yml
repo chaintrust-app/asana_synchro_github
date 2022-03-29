@@ -15,6 +15,7 @@ jobs:
         with:
           asana_secret: ${{ secrets.ASANA_ACCESS_TOKEN }}
           pr_name: ${{ github.event.commits[0].message}}
+          pr_is_merge: ${{ github.event.pull_request.merged == true}}
       - name: Get the name of PR
         id: name
         run: echo "The name of the PR is ${{ github.event.commits[0].message}} "
