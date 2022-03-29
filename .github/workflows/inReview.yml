@@ -1,4 +1,8 @@
-on: [push]
+on: 
+  pull_request:
+      types: [opened, reopened]
+      branches: 
+        - master
 
 jobs:
   hello_world_job:
@@ -14,11 +18,10 @@ jobs:
         id: hello
         with:
           asana_secret: ${{ secrets.ASANA_ACCESS_TOKEN }}
-          pr_name: ${{ github.event.commits[0].message}}
-          pr_is_merge: ${{ github.event.pull_request.merged == true}}
+          pr_name: ${{ github.event.pull_request.title}}
       - name: Get the name of PR
         id: name
-        run: echo "The name of the PR is ${{ github.event.commits[0].message}} "
+        run: echo "The name of the PR is ${{ github.event.pull_request.title}} "
       - name: Get the state of PR
         id: state
         run: echo "The PR is merge => ${{github.event.pull_request.merged == true}} "
