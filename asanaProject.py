@@ -45,7 +45,7 @@ def find_state_id_by_name(tasks):
 #Script 
 
 new_state_of_task = 'In review'  ## a checker 
-name_PR = '  OPS111 1- PR test de github' #os.environ['PR_NAME']
+name_PR = os.environ['PR_NAME']
 task_name = (''.join(re.search('(.+?)-', name_PR).group(1).split()))
 
 #A modifier à la mano 
