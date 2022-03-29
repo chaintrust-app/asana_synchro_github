@@ -1,4 +1,4 @@
 #!/bin/sh -l
 export ASANA_ACCESS_TOKEN=$ASANA_ACCESS_TOKEN
 export PR_NAME="$PR_NAME"
-python asanaProject.py
+python /code/asanaProject.py
