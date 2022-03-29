@@ -22,6 +22,3 @@ jobs:
       - name: Get the name of PR
         id: name
         run: echo "The name of the PR is ${{ github.event.pull_request.title}} "
-      - name: Get the state of PR
-        id: state
-        run: echo "The PR is merge => ${{github.event.pull_request.merged == true}} "
