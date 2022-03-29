@@ -21,7 +21,7 @@ def find_project_id_by_name(projects):
 
 #On cherche les tâches des différents projets
 
-def find_task_id_by_name(projects):
+def find_task_id_by_name(projects, task_name):
     result_task = []
     all_tasks = client.tasks.find_all({'project': projects})
     for task in all_tasks: 
@@ -31,7 +31,7 @@ def find_task_id_by_name(projects):
     
 #On cherche dans quelle section sont les tâches et on les bouge 
     
-def find_state_id_by_name(tasks):
+def find_state_id_by_name(tasks, task_name):
     result_state = []
     sections = client.sections.find_by_project(tasks['project'])
     for section in sections:
@@ -46,7 +46,6 @@ def find_state_id_by_name(tasks):
 
 new_state_of_task = 'In review'  ## a checker 
 name_PR = os.environ['PR_NAME']
-
 
 #A modifier à la mano 
 typology_name = ['ops', 'bus', 'cli']
@@ -63,11 +62,11 @@ def move_task():
                 if result_projects == []: 
                     return "Vous n'avez accès à aucun projet sur asana"
                 else: 
-                    result_task = list(filter(None, map(find_task_id_by_name, result_projects)))
+                    result_task = list(filter(None, map(find_task_id_by_name, result_projects, task_name)))
                     if result_task == []: 
                         return "Vous n'avez aucune tâche de ce nom dans vos projets asana"
                     else: 
-                        result = list(map(find_state_id_by_name, result_task[0]))
+                        result = list(map(find_state_id_by_name, result_task[0], task_name))
                         if result == []:
                             return "Aucune tâche n'a pu être bougée"
                         else: 
