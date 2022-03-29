@@ -8,6 +8,9 @@ inputs:
   pr_name: 
     description: 'name of the PR'
     required: true
+  pr_merge: 
+    description: 'is the PR merged'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -17,3 +20,4 @@ runs:
   env:
     ASANA_ACCESS_TOKEN: ${{ inputs.asana_secret }}
     PR_NAME: ${{ inputs.pr_name }}
+    PR_MERGE: ${{ inputs.pr_merge }}

@@ -1,6 +1,6 @@
 on: 
   pull_request:
-      types: [opened, reopened]
+      types: [opened, reopened, closed]
       branches: 
         - master
 
@@ -19,6 +19,7 @@ jobs:
         with:
           asana_secret: ${{ secrets.ASANA_ACCESS_TOKEN }}
           pr_name: ${{ github.event.pull_request.title}}
+          pr_merge: ${{github.event.pull_request.merged == true}}
       - name: Get the name of PR
         id: name
         run: echo "The name of the PR is ${{ github.event.pull_request.title}} "
