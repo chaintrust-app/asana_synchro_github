@@ -46,7 +46,7 @@ def find_state_id_by_name(tasks):
 
 name_PR = os.environ['PR_NAME']
 is_merge = (os.environ['PR_IS_MERGE'])
-if is_merge : 
+if is_merge == 'true' : 
     new_state_of_task = 'Integrated'
 else :
     new_state_of_task = 'In review' 
