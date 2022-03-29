@@ -21,7 +21,7 @@ def find_project_id_by_name(projects):
 
 #On cherche les tâches des différents projets
 
-def find_task_id_by_name(projects, task_name):
+def find_task_id_by_name(projects):
     result_task = []
     all_tasks = client.tasks.find_all({'project': projects})
     for task in all_tasks: 
@@ -31,7 +31,7 @@ def find_task_id_by_name(projects, task_name):
     
 #On cherche dans quelle section sont les tâches et on les bouge 
     
-def find_state_id_by_name(tasks, task_name):
+def find_state_id_by_name(tasks):
     result_state = []
     sections = client.sections.find_by_project(tasks['project'])
     for section in sections:
@@ -53,28 +53,29 @@ projects_list = ["Tech · Intra", "Tech · Extra"]
 
 
 def move_task():
-    name = re.search('(.+?)-', name_PR)
-    if name:
-        task_name = (''.join(name.group(1).split()))
-        for typo in typology_name:     #on check le nom de la task 
-            if(typo in task_name.lower()):
-                result_projects = list(filter(None, list(map(find_project_id_by_name, list(projects)))))
-                if result_projects == []: 
-                    return "Vous n'avez accès à aucun projet sur asana"
+    for typo in typology_name:     #on check le nom de la task 
+        if(typo in task_name.lower()):
+            result_projects = list(filter(None, list(map(find_project_id_by_name, list(projects)))))
+            if result_projects == []: 
+                return "Vous n'avez accès à aucun projet sur asana"
+            else: 
+                result_task = list(filter(None, map(find_task_id_by_name, result_projects)))
+                if result_task == []: 
+                    return "Vous n'avez aucune tâche de ce nom dans vos projets asana"
                 else: 
-                    result_task = list(filter(None, map(find_task_id_by_name, result_projects, task_name)))
-                    if result_task == []: 
-                        return "Vous n'avez aucune tâche de ce nom dans vos projets asana"
+                    result = list(map(find_state_id_by_name, result_task[0]))
+                    if result == []:
+                        return "Aucune tâche n'a pu être bougée"
                     else: 
-                        result = list(map(find_state_id_by_name, result_task[0], task_name))
-                        if result == []:
-                            return "Aucune tâche n'a pu être bougée"
-                        else: 
-                            return result
-            else:
-                return 'le nom de la tâche n\'est pas valide'
-    else: 
-        return 'le nom de la PR n\'est pas valide'
+                        return result
+        else:
+            return 'le nom de la tâche n\'est pas valide'
 
-print(move_task())
+
+name = re.search('(.+?)-', name_PR)
+if name:
+    task_name = (''.join(name.group(1).split()))
+    print(move_task())
+else: 
+    print('le nom de la PR n\'est pas valide')
 
