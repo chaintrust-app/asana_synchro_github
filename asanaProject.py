@@ -46,7 +46,7 @@ def find_state_id_by_name(tasks):
 
 new_state_of_task = 'In review'  ## a checker 
 name_PR = os.environ['PR_NAME']
-task_name = (''.join(re.search('(.+?)-', name_PR).group(1).split()))
+
 
 #A modifier à la mano 
 typology_name = ['ops', 'bus', 'cli']
@@ -54,23 +54,31 @@ projects_list = ["Tech · Intra", "Tech · Extra"]
 
 
 def move_task():
-    for typo in typology_name:     #on check le nom de la task 
-        if(typo in task_name.lower()):
-            result_projects = list(filter(None, list(map(find_project_id_by_name, list(projects)))))
-            if result_projects == []: 
-                return "Vous n'avez accès à aucun projet sur asana"
-            else: 
-                result_task = list(filter(None, map(find_task_id_by_name, result_projects)))
-                if result_task == []: 
-                    return "Vous n'avez aucune tâche de ce nom dans vos projets asana"
+    name = (''.join(re.search('(.+?)-', name_PR)))
+    print(name)
+    if name:
+        task_name = name.group(1).split()
+        print(task_name)
+        for typo in typology_name:     #on check le nom de la task 
+            if(typo in task_name.lower()):
+                result_projects = list(filter(None, list(map(find_project_id_by_name, list(projects)))))
+                if result_projects == []: 
+                    return "Vous n'avez accès à aucun projet sur asana"
                 else: 
-                    result = list(map(find_state_id_by_name, result_task[0]))
-                    if result == []:
-                        return "Aucune tâche n'a pu être bougée"
+                    result_task = list(filter(None, map(find_task_id_by_name, result_projects)))
+                    if result_task == []: 
+                        return "Vous n'avez aucune tâche de ce nom dans vos projets asana"
                     else: 
-                        return result
-        else:
-            return 'le nom de la tâche n\'est pas valide'
+                        result = list(map(find_state_id_by_name, result_task[0]))
+                        if result == []:
+                            return "Aucune tâche n'a pu être bougée"
+                        else: 
+                            return result
+            else:
+                return 'le nom de la tâche n\'est pas valide'
+    else: 
+        return 'le nom de la PR n\'est pas valide'
+
 
 print(move_task())
 
