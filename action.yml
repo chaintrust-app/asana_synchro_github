@@ -17,4 +17,3 @@ runs:
   env:
     ASANA_ACCESS_TOKEN: ${{ inputs.asana_secret }}
     PR_NAME: ${{ inputs.pr_name }}
-    PR_IS_MERGE: ${{ inputs.pr_is_merge }}
