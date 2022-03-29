@@ -29,7 +29,7 @@ def find_task_id_by_name(projects):
             result_task.append({'project': projects[0], 'task': task['gid']})
     return result_task
     
-#On cherche dans quelle section sont les tâches et on les bouge 
+#On cherche dans quelles sections sont les tâches et on les bouge 
     
 def find_state_id_by_name(tasks):
     result_state = []
@@ -39,7 +39,6 @@ def find_state_id_by_name(tasks):
             client.sections.add_task(section['gid'], {'task': tasks['task']})
             result_state.append(task_name + ' move to ' + new_state_of_task)
     return result_state
-
 
 
 #Script 
