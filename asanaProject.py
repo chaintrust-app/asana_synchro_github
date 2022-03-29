@@ -54,10 +54,10 @@ projects_list = ["Tech · Intra", "Tech · Extra"]
 
 
 def move_task():
-    name = (''.join(re.search('(.+?)-', name_PR)))
+    name = re.search('(.+?)-', name_PR)
     print(name)
     if name:
-        task_name = name.group(1).split()
+        task_name = (''.join(name.group(1).split()))
         print(task_name)
         for typo in typology_name:     #on check le nom de la task 
             if(typo in task_name.lower()):
