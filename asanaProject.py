@@ -55,10 +55,8 @@ projects_list = ["Tech · Intra", "Tech · Extra"]
 
 def move_task():
     name = re.search('(.+?)-', name_PR)
-    print(name)
     if name:
         task_name = (''.join(name.group(1).split()))
-        print(task_name)
         for typo in typology_name:     #on check le nom de la task 
             if(typo in task_name.lower()):
                 result_projects = list(filter(None, list(map(find_project_id_by_name, list(projects)))))
@@ -78,7 +76,6 @@ def move_task():
                 return 'le nom de la tâche n\'est pas valide'
     else: 
         return 'le nom de la PR n\'est pas valide'
-
 
 print(move_task())
 

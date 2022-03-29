@@ -20,4 +20,4 @@ jobs:
         run: echo "The name of the PR is ${{ github.event.commits[0].message}} "
       - name: Get the state of PR
         id: state
-        run: echo "The state of the PR is ${{ github.event.pull_request.title }} | ${{github.event.pull_request.merged}} "
+        run: echo "The state of the PR is ${{ github.event.review.state }} | ${{github.event.pull_request.merged}} "
