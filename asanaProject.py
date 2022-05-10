@@ -75,14 +75,15 @@ projects_list = ["Tech · Intra", "Tech · Extra"]
 name_PR = os.environ['PR_NAME'] if "PR_NAME" in os.environ else None
 is_merge = os.environ['PR_MERGE'] if "PR_MERGE" in os.environ else None
 pr_nb_deploy = os.environ['PR_NB_FOR_DEPLOY'] if "PR_NB_FOR_DEPLOY" in os.environ else None
+repo_name = os.environ['REPO_NAME'] if "REPO_NAME" in os.environ else None
 
 print('-------------------')
 print(is_merge)
 print(pr_nb_deploy)
-exit()
+print(repo_name)
 
-PR_number = 2089
 repo_name = 'chaintrust'
+
 if (pr_nb_deploy): 
     new_state_of_task = 'Producted'
 elif (is_merge == 'true'):
@@ -106,7 +107,7 @@ if (pr_nb_deploy != "" and is_merge == 'true'):  #1e cas : development
     else: 
         print(repository)
 
-    pr_deploy = repository.get_pull(int(PR_number))
+    pr_deploy = repository.get_pull(int(pr_nb_deploy))
     list_commits = list(pr_deploy.get_commits())
 
     list_message_commit = []

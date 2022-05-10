@@ -14,6 +14,9 @@ inputs:
   pr_nb_for_deploy: 
     description: 'pr nb for deploy'
     required: false
+  repo_name: 
+    description: 'repo name'
+    required: false
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -25,3 +28,4 @@ runs:
     PR_NAME: ${{ inputs.pr_name }}
     PR_MERGE: ${{ inputs.pr_merge }}
     PR_NB_FOR_DEPLOY: ${{ inputs.pr_nb_for_deploy }}
+    REPO_NAME: ${{ inputs.repo_name}}
