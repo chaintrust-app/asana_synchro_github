@@ -24,6 +24,3 @@ jobs:
       - name: Get the name of PR
         id: name
         run: echo "The name of the PR is ${{ github.event.pull_request.title}} "
-      - name: Get the nb for deploy
-        id: name
-        run: echo "The name of the PR is ${{ github.event.pull_request.number}} "
