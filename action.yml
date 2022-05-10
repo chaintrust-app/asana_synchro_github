@@ -11,6 +11,9 @@ inputs:
   pr_merge: 
     description: 'is the PR merged'
     required: true
+  pr_nb_for_deploy: 
+    description: 'pr nb for deploy'
+    required: false
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -21,3 +24,4 @@ runs:
     ASANA_ACCESS_TOKEN: ${{ inputs.asana_secret }}
     PR_NAME: ${{ inputs.pr_name }}
     PR_MERGE: ${{ inputs.pr_merge }}
+    PR_NB_FOR_DEPLOY: ${{ inputs.pr_nb_for_deploy }}
