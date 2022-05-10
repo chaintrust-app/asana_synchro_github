@@ -90,6 +90,7 @@ if (pr_nb_deploy != "" and is_merge == 'true'):  #1e cas : deploy
     g = Github(os.environ['GITHUB_TOKEN'])
     repository = None
 
+    print(g.get_repo())
     for repo in g.get_user().get_repos():
         if (repo.name == repo_name):
             repository = repo
