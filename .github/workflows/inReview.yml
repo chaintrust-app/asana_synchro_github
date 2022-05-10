@@ -20,7 +20,6 @@ jobs:
           asana_secret: ${{ secrets.ASANA_ACCESS_TOKEN }}
           pr_name: ${{ github.event.pull_request.title}}
           pr_merge: ${{github.event.pull_request.merged == true}}
-          pr_nb_for_deploy: ${{ github.event.pull_request.number}}
       - name: Get the name of PR
         id: name
         run: echo "The name of the PR is ${{ github.event.pull_request.title}} "
