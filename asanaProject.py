@@ -135,7 +135,6 @@ if (pr_nb_deploy != "" and is_merge == 'true'):  #1e cas : deploy
         else: 
             print('le nom de la PR n\'est pas valide')
             exit(1)   
-
 else: #2e cas : si in review ou merge in main 
     name = re.search('(.+?)-', name_PR)
     if name:
