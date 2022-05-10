@@ -7,7 +7,7 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Deploy
     steps: 
       # To use this repository's private action,
       # you must check out the repository
@@ -16,6 +16,8 @@ jobs:
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
         id: hello
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           asana_secret: ${{ secrets.ASANA_ACCESS_TOKEN }}
           pr_merge: ${{github.event.pull_request.merged == true}}
