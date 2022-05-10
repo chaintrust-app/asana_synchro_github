@@ -91,9 +91,10 @@ if (pr_nb_deploy != "" and is_merge == 'true'):  #1e cas : deploy
     repository = None
 
     print(g.get_repo(f"chaintrust-app/{repo_name}"))
-    for repo in g.get_user().get_repos():
-        if (repo.name == repo_name):
-            repository = repo
+    #for repo in g.get_user().get_repos():
+        # if (repo.name == repo_name):
+        #     repository = repo
+    repository = g.get_repo(f"chaintrust-app/{repo_name}")
     if(repository == None): 
         print('le repo n\'existe pas')
         exit(1)
