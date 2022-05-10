@@ -80,7 +80,7 @@ repo_name = os.environ['REPO_NAME'] if "REPO_NAME" in os.environ else None
 if (pr_nb_deploy): 
     new_state_of_task = 'Producted'
 elif (is_merge == 'true'):
-    new_state_of_task = 'Merged in main' 
+    new_state_of_task = 'Deployed in staging' 
 else: 
     new_state_of_task = 'In review'     
 
