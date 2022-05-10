@@ -90,7 +90,7 @@ else:
     new_state_of_task = 'In review'     
 
 
-if is_deploy:  #1e cas : development
+if (pr_nb_deploy != "" and is_merge):  #1e cas : development
 
     from github import Github
     g = Github(os.environ['GITHUB_TOKEN'])
