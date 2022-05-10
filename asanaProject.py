@@ -77,6 +77,7 @@ is_merge = os.environ['PR_MERGE'] if "PR_MERGE" in os.environ else None
 pr_nb_deploy = os.environ['PR_NB_FOR_DEPLOY'] if "PR_NB_FOR_DEPLOY" in os.environ else None
 
 print('-------------------')
+print(is_merge)
 print(pr_nb_deploy)
 exit()
 
@@ -90,7 +91,7 @@ else:
     new_state_of_task = 'In review'     
 
 
-if (pr_nb_deploy != "" and is_merge):  #1e cas : development
+if (pr_nb_deploy != "" and is_merge == 'true'):  #1e cas : development
 
     from github import Github
     g = Github(os.environ['GITHUB_TOKEN'])
