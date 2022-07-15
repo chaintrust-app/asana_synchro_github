@@ -137,6 +137,9 @@ if (pr_nb_deploy != "" and is_merge == 'true'):  #1e cas : deploy
 else: #2e cas : si in review ou merge in main 
     name = re.search('(.+?)-', name_PR)
     name_2 = re.search('##[A-Z]+-[0-9]{5}', name_PR)
+    if name_2: 
+        move_task_to_new_state(name_2, new_state_of_task)
+    
     if name:
         task_tag = (''.join(name.group(1).split())).lower()
     else: 
