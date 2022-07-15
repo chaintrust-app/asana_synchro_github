@@ -139,7 +139,7 @@ else: #2e cas : si in review ou merge in main
     name_2 = re.search('##[A-Z]+-[0-9]{5}', name_PR)
     if name_2: 
         print("yolo")
-        print(name2)
+        print(name_2)
         task_tag = (''.join(name.group(0).split())).lower()
         move_task_to_new_state(task_tag, new_state_of_task)
     
