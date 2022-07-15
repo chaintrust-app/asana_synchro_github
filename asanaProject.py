@@ -140,7 +140,8 @@ else: #2e cas : si in review ou merge in main
     if name_2: 
         print("yolo")
         print(name2)
-        move_task_to_new_state(name_2, new_state_of_task)
+        task_tag = (''.join(name.group(0).split())).lower()
+        move_task_to_new_state(task_tag, new_state_of_task)
     
     if name:
         task_tag = (''.join(name.group(1).split())).lower()
