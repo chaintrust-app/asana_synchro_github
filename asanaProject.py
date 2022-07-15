@@ -16,10 +16,9 @@ def find_task_id_by_name(project_gid, task_tag):
     result_task = []
     all_tasks = list(client.tasks.find_all({'project': project_gid}))
     for task in all_tasks: 
-        if task_tag in task['name'].lower():
+        if task_tag.lower() in task['name'].lower():
             result_task.append({'project': project_gid, 'task': task['gid']})
     return result_task
-     
 
 #Move task  
 
@@ -67,7 +66,7 @@ def check_name(task_tag, typology_name):
 #A modifier à la mano 
 
 typology_name = ['ops', 'bus', 'cli']
-projects_list = ["Tech · Intra", "Tech · Extra"] 
+projects_list = ["Tech · Intra", "Tech · Extra","Bugs"] 
 
 
 #recup info github
@@ -128,23 +127,24 @@ if (pr_nb_deploy != "" and is_merge == 'true'):  #1e cas : deploy
             task_tag = (''.join(name.group(1).split())).lower()
         else: 
             print('le nom de la PR n\'est pas valide')
-            exit(1)
+            exit(0)
 
         if check_name(task_tag, typology_name):
             move_task_to_new_state(task_tag, new_state_of_task)
         else: 
             print('le nom de la PR n\'est pas valide')
-            exit(1)   
+            exit(0)   
 else: #2e cas : si in review ou merge in main 
     name = re.search('(.+?)-', name_PR)
+    name_2 = re.search('##[A-Z]+-[0-9]{5}', name_PR)
     if name:
         task_tag = (''.join(name.group(1).split())).lower()
     else: 
         print('le nom de la PR n\'est pas valide')
-        exit(1)
+        exit(0)
 
     if check_name(task_tag, typology_name):
         move_task_to_new_state(task_tag, new_state_of_task)
     else: 
         print('le nom de la PR n\'est pas valide')
-        exit(1)   
+        exit(0)   
